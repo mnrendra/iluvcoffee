@@ -8,6 +8,7 @@ async function bootstrap() {
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: process.env.NODE_ENV === 'production' ? false : true,
     }),
   );
   await app.listen(3000);

@@ -32,7 +32,7 @@ export class CoffeesController {
   @Post()
   @HttpCode(HttpStatus.CREATED)
   create(@Body() body: CreateCoffeeDto) {
-    // return body;
+    console.log(body instanceof CreateCoffeeDto);
     return this.coffeesService.create(body);
   }
 
