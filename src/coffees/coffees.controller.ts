@@ -12,6 +12,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Public } from '../common/decorators/public.decorator';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
@@ -34,8 +35,9 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coffeesService.findOne(id);
+  findOne(@Param('id', ParseIntPipe) id: number) {
+    console.log('findOne', id);
+    return this.coffeesService.findOne('' + id);
   }
 
   @Post()
