@@ -47,14 +47,14 @@ import { COFFEE_BRANDS } from './coffees.constants';
     //   },
     //   inject: [Connection],
     // },
-    {
-      provide: COFFEE_BRANDS,
-      useFactory: () => {
-        console.log('CoffeeBrands instantiated');
-        return ['buddy brew', 'nescafe'];
-      },
-      scope: Scope.TRANSIENT,
-    },
+    // {
+    //   provide: COFFEE_BRANDS,
+    //   useFactory: () => {
+    //     console.log('CoffeeBrands instantiated');
+    //     return ['buddy brew', 'nescafe'];
+    //   },
+    //   scope: Scope.TRANSIENT,
+    // },
   ],
   exports: [CoffeesService],
 })

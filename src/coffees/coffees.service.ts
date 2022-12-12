@@ -17,10 +17,8 @@ export class CoffeesService {
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
     private readonly connection: Connection,
-    @Inject(COFFEE_BRANDS)
-    coffeeBrands: string[],
   ) {
-    console.log('CoffeesService instantiated', coffeeBrands);
+    console.log('CoffeesService instantiated');
   }
 
   findAll(paginationQuery: PaginationQueryDto) {
