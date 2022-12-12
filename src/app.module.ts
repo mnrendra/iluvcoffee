@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
+import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { CoffeesModule } from './coffees/coffees.module';
       autoLoadEntities: true, // models will be loaded automatically
       synchronize: process.env.NODE_ENV === 'production' ? false : true, // your entities will be synced with the database(recommended: disable in prod)
     }),
+    CoffeeRatingModule,
   ],
   controllers: [AppController],
   providers: [AppService],
