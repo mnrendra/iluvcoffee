@@ -22,6 +22,9 @@ export class Coffee {
   @ManyToMany(
     (type) => Flavor,
     (flavor) => flavor.coffees, // what is "coffee" within the Flavor Entity
+    {
+      cascade: true, // 👈 or optionally just insert or update ['insert']
+    },
   ) // 👈
-  flavors: string[];
+  flavors: Flavor[];
 }
