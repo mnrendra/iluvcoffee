@@ -9,9 +9,11 @@ import {
   Patch,
   Post,
   Query,
-  UsePipes,
+  // UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { Protocol } from 'src/common/decorators/protocol.decorator';
+// import { request } from 'http';
 import { ParseIntPipe } from 'src/common/pipes/parse-int.pipe';
 import { Public } from '../common/decorators/public.decorator';
 import { CoffeesService } from './coffees.service';
@@ -28,9 +30,9 @@ export class CoffeesController {
   // @UsePipes(ValidationPipe) // Method-scoped
   @Public()
   @Get()
-  async findAll(@Query() paginationQuery: any) {
-    console.log('CoffeesController findAll');
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+  async findAll(@Protocol('https') protocol: string, @Query() paginationQuery: any) {
+    console.log('CoffeesController findAll', protocol);
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     return this.coffeesService.findAll(paginationQuery);
   }
 
