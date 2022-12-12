@@ -12,6 +12,7 @@ import {
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
+import { Public } from '../common/decorators/public.decorator';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
@@ -24,6 +25,7 @@ export class CoffeesController {
   }
 
   // @UsePipes(ValidationPipe) // Method-scoped
+  @Public()
   @Get()
   findAll(@Query() paginationQuery: any) {
     console.log('CoffeesController findAll');
