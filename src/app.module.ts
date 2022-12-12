@@ -1,16 +1,24 @@
+import * as Joi from 'joi';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CoffeesModule } from './coffees/coffees.module';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { DatabaseModule } from './database/database.module';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: '.environment',
+      validationSchema: Joi.object({
+        DATABASE_HOST: Joi.string().default('localhost'),
+        DATABASE_PORT: Joi.number().default(5432),
+        DATABASE_USER: Joi.string().required(),
+        DATABASE_PASSWORD: Joi.string().required(),
+        DATABASE_NAME: Joi.string().required(),
+      }),
     }),
     CoffeesModule,
     TypeOrmModule.forRoot({
